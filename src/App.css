@@ -9,3 +9,7 @@ a{
   font-size: 20px;
   font-weight: bold;
 }
+
+*{
+  box-sizing: border-box;
+}
