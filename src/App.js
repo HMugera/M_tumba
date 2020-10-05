@@ -11,8 +11,6 @@ import LoginRegister from "./pages/login-and-register/login-and-register.compone
 import {auth,createUserProfileDocument} from './firebase/firebase.utils'
 
 class App extends React.Component {
-
-
   constructor(){
     super();
         this.state = {
@@ -22,17 +20,12 @@ class App extends React.Component {
 
 
 unsubscribeFromAuth = null;
-
-
   componentDidMount(){
    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth =>{
-
-
     if (userAuth){
       const userRef = await createUserProfileDocument(userAuth);
-
       userRef.onSnapshot(snapShot =>{
-      this.setState({
+         this.setState({
         currentUser:{
           id:snapShot.id,
           ...snapShot.data()
