@@ -1,4 +1,5 @@
 import React from "react";
+import {connect} from 'react-redux'
 import { Link } from "react-router-dom";
 import {auth} from '../../firebase/firebase.utils'
 
@@ -12,21 +13,23 @@ const Header = ({currentUser}) => (
     </Link>
     <div className="options">
       <Link className="option" to="/shop">
-        SHOP
+        SHOP 
       </Link>
       <Link className="option" to="/contact">
         CONTACT
       </Link>
-      {
-        currentUser ? 
-        <div className='option' onClick={()=>auth.signOut()}>SIGN OUT</div>:
-        <Link className='option' to='/Login'>
+      {currentUser ? 
+        (<div className='option' onClick={()=>auth.signOut()}>SIGN OUT</div>):
+      (<Link className='option' to='/Login'>
         SIGN IN
-        </Link>
+        </Link>)
       }
     </div>
   </div>
 );
 
+const mapStateToProps = state =>({
+  currentUser:state.user.currentUser
+});
 
-export default Header;
+export default connect(mapStateToProps)(Header);

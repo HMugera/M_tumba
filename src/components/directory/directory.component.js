@@ -9,7 +9,7 @@ class Directory extends React.Component {
     this.state = {
       sections: [
         {
-          title: "Kofia",
+          title: "Hats",
           imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
           id: 1,
           linkUrl: "hats",
@@ -21,7 +21,7 @@ class Directory extends React.Component {
           linkUrl: "jackets",
         },
         {
-          title: "Viatu",
+          title: "Shoes",
           imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
           id: 3,
           linkUrl: "shop/sneakers",
