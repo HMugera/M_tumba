@@ -1,5 +1,5 @@
 import React from "react";
-import {connect} from 'react-redux'
+import {connect,useSelector} from 'react-redux'
 import { Link } from "react-router-dom";
 import {auth} from '../../firebase/firebase.utils'
 
@@ -21,15 +21,18 @@ const Header = ({currentUser,hidden}) => (
         CONTACT
       </Link>
       {currentUser ? 
-        (<div className='option' onClick={()=>auth.signOut()}>SIGN OUT</div>):
+        (<div className='option' onClick={()=>auth.signOut()}> <span className="name">Hello {currentUser.displayName}</span> SIGN OUT </div>):
       (<Link className='option' to='/Login'>
         SIGN IN
-        </Link>)
+        </Link> )
+        
       }
-        <Link className="option" to="/contact">
+        <Link className="option" to='#'>
         <CartIcon/>
       </Link>
+     
     </div>
+  
    {hidden ? null : <Cartdropdown/>}
   </div>
 );
