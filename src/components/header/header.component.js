@@ -29,7 +29,7 @@ const Header = ({currentUser,hidden}) => (
         SIGN IN
         </Link> )
                 }
-        <Link className="option" to='#'>
+        <Link className="option" to='#' >
         <CartIcon/>
       </Link>
      
