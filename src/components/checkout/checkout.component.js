@@ -8,6 +8,7 @@ import {
   selectCartItems,
   selectCartTotal,
 } from "../../redux/cart/cart.selectors";
+import SCButton from "../stripe-button/stripe-button.component";
 
 import "./checkout.scss";
 
@@ -36,8 +37,18 @@ function CheckoutPage({ cartItems, total }) {
       ))}
 
       {cartItems.length ? (
-        <div className="total">
-          <span>TOTAL: ${total}</span>
+        <div>
+          <div className="total">
+            <span>TOTAL: ${total}</span>
+          </div>
+          <div className="test-warning">
+            Please use thefollowing credit card for payments
+            <br/>
+            *4242 4242 4242 4242* EXP-01/2020 CVV-123
+
+          </div>
+        
+          <div className='button'>  <SCButton price={total} /></div>
         </div>
       ) : (
         ""
