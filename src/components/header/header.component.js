@@ -8,37 +8,39 @@ import Cartdropdown from "../cart-dropdown/cart-dropdown.component";
 import {createStructuredSelector} from 'reselect'
 import {selectCartHidden} from '../../redux/cart/cart.selectors'
 import {selectCurrentUser}  from '../../redux/user/user.selector'
+import './header.styles.scss'
 
+import {HeaderContainer,LogoContainer,OptionsContainer,OptionDiv,OptionLink} from './header.styles'
 // import { ReactComponent as Logo } from "../../assets/crown.svg";
 //import {ReactComponent as Logo} from './gg.svg'
-import "./header.styles.scss";
+
 const Header = ({currentUser,hidden}) => (
-  <div className="header">
-    <Link className="logo-container" to="/">
-      {/* <Logo className="logo" /> */}
+  <HeaderContainer>
+      <Link className="logo-container" to="/">
        </Link>
-    <div className="options">
-      <Link className="option" to="/shop">
+
+    <OptionsContainer>
+      <OptionLink  to="/shop">
         SHOP 
-      </Link>
-      <Link className="option" to="/contact">
+      </OptionLink>
+      <OptionLink to="/contact">
         CONTACT
-      </Link>
-      {currentUser ? (<Link> <span className="name">Welcome {currentUser.displayName}</span></Link>):"" }
+      </OptionLink>
+      {currentUser ? (<OptionLink> <span className="">Welcome {currentUser.displayName}</span></OptionLink>):"" }
       {currentUser ? 
-        (<Link className='option' onClick={()=>auth.signOut()}>  SIGN OUT </Link>):
-      (<Link className='option' to='/Login'>
+        (<OptionLink  onClick={()=>auth.signOut()}>  SIGN OUT </OptionLink>):
+      (<OptionLink  to='/Login'>
         SIGN IN
-        </Link> )
+        </OptionLink> )
                 }
-        <Link className="option" to='#' >
+        <OptionLink  to='#' >
         <CartIcon/>
-      </Link>
+      </OptionLink>
      
-    </div>
+    </OptionsContainer>
   
    {hidden ? null : <Cartdropdown/>}
-  </div>
+  </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
